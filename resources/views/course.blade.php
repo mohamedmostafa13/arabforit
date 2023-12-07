@@ -62,7 +62,7 @@
 {{-- add new course modal end --}}
 
 {{-- edit course modal start --}}
-<div class="modal fade" id="editInstructorModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+<div class="modal fade" id="editCourseModal" tabindex="-1" aria-labelledby="exampleModalLabel"
   data-bs-backdrop="static" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
@@ -115,7 +115,7 @@
     <div class="row my-5">
       <div class="col-lg-12">
         <div class="card shadow">
-          <div class="card-header bg-danger d-flex justify-content-between align-items-center">
+          <div class="card-header bg-warning d-flex justify-content-between align-items-center">
             <h3 class="text-light">Manage Courses</h3>
             <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#addEmployeeModal"><i
                 class="bi-plus-circle me-2"></i>Add New Course</button>
@@ -146,7 +146,7 @@
         const fd = new FormData(this);
         $("#add_employee_btn").text('Adding...');
         $.ajax({
-          url: '{{ route('store') }}',
+          url: '{{ route('course-store') }}',
           method: 'post',
           data: fd,
           cache: false,
@@ -174,7 +174,7 @@
         e.preventDefault();
         let id = $(this).attr('id');
         $.ajax({
-          url: '{{ route('edit') }}',
+          url: '{{ route('course-edit') }}',
           method: 'get',
           data: {
             id: id,
@@ -200,7 +200,7 @@
         const fd = new FormData(this);
         $("#edit_employee_btn").text('Updating...');
         $.ajax({
-          url: '{{ route('update') }}',
+          url: '{{ route('course-update') }}',
           method: 'post',
           data: fd,
           cache: false,
@@ -218,7 +218,7 @@
             }
             $("#edit_employee_btn").text('Update Course');
             $("#edit_employee_form")[0].reset();
-            $("#editInstructorModal").modal('hide');
+            $("#editCourseModal").modal('hide');
           }
         });
       });
@@ -239,7 +239,7 @@
         }).then((result) => {
           if (result.isConfirmed) {
             $.ajax({
-              url: '{{ route('delete') }}',
+              url: '{{ route('course-delete') }}',
               method: 'delete',
               data: {
                 id: id,
@@ -264,7 +264,7 @@
 
       function fetchAllEmployees() {
         $.ajax({
-          url: '{{ route('fetchAll') }}',
+          url: '{{ route('course-fetchAll') }}',
           method: 'get',
           success: function(response) {
             $("#show_all_employees").html(response);

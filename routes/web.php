@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\InstructorController;
+use App\Http\Controllers\CourseController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,8 +15,16 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/', [InstructorController::class, 'index']);
 Route::get('/course', [InstructorController::class, 'course']);
-Route::post('/store', [InstructorController::class, 'store'])->name('store');
-Route::get('/fetchall', [InstructorController::class, 'fetchAll'])->name('fetchAll');
-Route::delete('/delete', [InstructorController::class, 'delete'])->name('delete');
-Route::get('/edit', [InstructorController::class, 'edit'])->name('edit');
-Route::post('/update', [InstructorController::class, 'update'])->name('update');
+
+Route::post('/instructor-store', [InstructorController::class, 'store'])->name('instructor-store');
+Route::get('/instructor-fetchall', [InstructorController::class, 'fetchAll'])->name('instructor-fetchAll');
+Route::delete('/instructor-delete', [InstructorController::class, 'delete'])->name('instructor-delete');
+Route::get('/instructor-edit', [InstructorController::class, 'edit'])->name('instructor-edit');
+Route::post('/instructor-update', [InstructorController::class, 'update'])->name('instructor-update');
+
+
+Route::post('/course-store', [CourseController::class, 'store'])->name('course-store');
+Route::get('/course-fetchall', [CourseController::class, 'fetchAll'])->name('course-fetchAll');
+Route::delete('/course-delete', [CourseController::class, 'delete'])->name('course-delete');
+Route::get('/course-edit', [CourseController::class, 'edit'])->name('course-edit');
+Route::post('/course-update', [CourseController::class, 'update'])->name('course-update');

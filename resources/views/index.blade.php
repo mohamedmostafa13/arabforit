@@ -149,7 +149,7 @@
         const fd = new FormData(this);
         $("#add_employee_btn").text('Adding...');
         $.ajax({
-          url: '{{ route('store') }}',
+          url: '{{ route('instructor-store') }}',
           method: 'post',
           data: fd,
           cache: false,
@@ -177,7 +177,7 @@
         e.preventDefault();
         let id = $(this).attr('id');
         $.ajax({
-          url: '{{ route('edit') }}',
+          url: '{{ route('instructor-edit') }}',
           method: 'get',
           data: {
             id: id,
@@ -203,7 +203,7 @@
         const fd = new FormData(this);
         $("#edit_employee_btn").text('Updating...');
         $.ajax({
-          url: '{{ route('update') }}',
+          url: '{{ route('instructor-update') }}',
           method: 'post',
           data: fd,
           cache: false,
@@ -242,7 +242,7 @@
         }).then((result) => {
           if (result.isConfirmed) {
             $.ajax({
-              url: '{{ route('delete') }}',
+              url: '{{ route('instructor-delete') }}',
               method: 'delete',
               data: {
                 id: id,
@@ -267,7 +267,7 @@
 
       function fetchAllEmployees() {
         $.ajax({
-          url: '{{ route('fetchAll') }}',
+          url: '{{ route('instructor-fetchAll') }}',
           method: 'get',
           success: function(response) {
             $("#show_all_employees").html(response);
